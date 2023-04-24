@@ -1,0 +1,26 @@
+CREATE TABLE pessoa (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  data_nascimento DATE NOT NULL,
+  cpf VARCHAR(11) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  telefone VARCHAR(20) NOT NULL,
+  saldo NUMERIC(10,2) DEFAULT 0.00
+);
+
+CREATE TABLE livro (
+  id SERIAL PRIMARY KEY,
+  titulo VARCHAR(100) NOT NULL,
+  autor VARCHAR(100) NOT NULL,
+  preco NUMERIC(10,2) NOT NULL,
+  quantidade INTEGER NOT NULL
+);
+
+CREATE TABLE transacao (
+  id SERIAL PRIMARY KEY,
+  id_comprador INTEGER REFERENCES pessoa(id) NOT NULL,
+  id_livro INTEGER REFERENCES livro(id) NOT NULL,
+  quantidade INTEGER NOT NULL,
+  valor_unitario NUMERIC(10,2) NOT NULL,
+  data TIMESTAMP NOT NULL DEFAULT NOW()
+);
