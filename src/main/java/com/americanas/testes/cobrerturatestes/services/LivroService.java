@@ -1,4 +1,4 @@
-package com.americanas.testes.cobrerturatestes.service;
+package com.americanas.testes.cobrerturatestes.services;
 
 
 import com.americanas.testes.cobrerturatestes.model.Livro;
@@ -19,7 +19,7 @@ public class LivroService {
         return livroRespository.save(livro);
     }
 
-    public Livro buscarLivro (Long id){
+    public Livro buscarLivroPorId(Long id){
         return livroRespository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Livro não encontrado"));
     }
@@ -29,7 +29,7 @@ public class LivroService {
     }
 
     public Livro atualizarLivro(Livro livro){
-        Livro livroExistente = buscarLivro(livro.getId());
+        Livro livroExistente = buscarLivroPorId(livro.getId());
         livroExistente.setNome(livro.getNome());
         livroExistente.setAutor(livro.getAutor());
         livroExistente.setPreco(livro.getPreco());
@@ -39,7 +39,7 @@ public class LivroService {
     }
 
     public void excluirLivro(Long id){
-        Livro livro = buscarLivro(id);
+        Livro livro = buscarLivroPorId(id);
         livroRespository.delete(livro);
     }
 

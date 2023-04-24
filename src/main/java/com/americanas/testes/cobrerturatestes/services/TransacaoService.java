@@ -1,4 +1,4 @@
-package com.americanas.testes.cobrerturatestes.service;
+package com.americanas.testes.cobrerturatestes.services;
 
 
 import com.americanas.testes.cobrerturatestes.model.Livro;

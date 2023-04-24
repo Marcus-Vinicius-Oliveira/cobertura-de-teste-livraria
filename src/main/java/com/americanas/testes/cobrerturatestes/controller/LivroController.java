@@ -2,10 +2,12 @@ package com.americanas.testes.cobrerturatestes.controller;
 
 
 import com.americanas.testes.cobrerturatestes.model.Livro;
-import com.americanas.testes.cobrerturatestes.service.LivroService;
+import com.americanas.testes.cobrerturatestes.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -15,12 +17,15 @@ public class LivroController {
     @Autowired
     private LivroService livroService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Livro> buscarLivro(@PathVariable Long id){
-        Livro livro = livroService.buscarLivro(id);
-//        Livro l1 = new Livro(1L,"Vinicius","Ed.2","Vini",10.00, 1);
-//
-//        return ResponseEntity.ok().body(l1);
+    @GetMapping
+    public ResponseEntity<List<Livro>> ListarLivros(){
+        List<Livro> list = livroService.listarLivros();
+        return ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Livro> buscarLivroPorId(@PathVariable Long id){
+        Livro livro = livroService.buscarLivroPorId(id);
         return ResponseEntity.ok(livro);
     }
 
