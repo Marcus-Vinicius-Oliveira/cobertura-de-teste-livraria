@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Pessoa implements Serializable {
@@ -19,7 +20,7 @@ public class Pessoa implements Serializable {
 
     private String nome;
 
-    private LocalDate dataNascimento;
+    private String dataNascimento;
 
     private String cpf;
 
@@ -32,7 +33,7 @@ public class Pessoa implements Serializable {
     public Pessoa(){
 
     }
-    public Pessoa(Long id, String nome, LocalDate dataNascimento,
+    public Pessoa(Long id, String nome, String dataNascimento,
                   String cpf, String email, String telefone, Double saldo) {
         this.id = id;
         this.nome = nome;
@@ -59,11 +60,11 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
