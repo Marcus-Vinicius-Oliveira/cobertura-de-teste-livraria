@@ -3,8 +3,8 @@ package com.americanas.testes.cobrerturatestes.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.Instant;
+
 
 @Entity
 public class Transacao implements Serializable {
@@ -14,12 +14,14 @@ public class Transacao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime dataHora;
+    private Instant momento;
 
     @ManyToOne
+    @JoinColumn(name = "id_comprador")
     private Pessoa comprador;
 
     @ManyToOne
+    @JoinColumn(name = "id_livro")
     private Livro livro;
 
     private Double valorVenda;
@@ -28,10 +30,10 @@ public class Transacao implements Serializable {
 
     }
 
-    public Transacao(Long id, LocalDateTime dataHora,
+    public Transacao(Long id, Instant momento,
                      Pessoa comprador, Livro livro, Double valorVenda) {
         this.id = id;
-        this.dataHora = dataHora;
+        this.momento = momento;
         this.comprador = comprador;
         this.livro = livro;
         this.valorVenda = valorVenda;
@@ -45,12 +47,12 @@ public class Transacao implements Serializable {
         this.id = id;
     }
 
-    public LocalDateTime getDataHora() {
-        return dataHora;
+    public Instant getMomento() {
+        return momento;
     }
 
-    public void setDataHora(LocalDateTime dataHora) {
-        this.dataHora = dataHora;
+    public void setMomento(Instant momento) {
+        this.momento = momento;
     }
 
     public Pessoa getComprador() {
@@ -73,7 +75,7 @@ public class Transacao implements Serializable {
     public String toString() {
         return "Transacao{" +
                 "id=" + id +
-                ", dataHora=" + dataHora +
+                ", dataHora=" + momento +
                 ", comprador=" + comprador +
                 ", livro=" + livro +
                 '}';

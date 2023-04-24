@@ -1,11 +1,9 @@
 package com.americanas.testes.cobrerturatestes.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Livro implements Serializable {
@@ -24,6 +22,12 @@ public class Livro implements Serializable {
     private Double preco;
 
     private Integer quantidade;
+
+    @OneToMany(mappedBy = "livro")
+    private List<Transacao> transacoes;
+
+    @ManyToMany(mappedBy = "livros")
+    private List<Comprador> compradores;
 
     public Livro(){
 

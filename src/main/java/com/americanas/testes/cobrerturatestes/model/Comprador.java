@@ -1,7 +1,6 @@
 package com.americanas.testes.cobrerturatestes.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,7 +10,10 @@ import java.util.List;
 public class Comprador extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "compra",
+            joinColumns = @JoinColumn(name = "id_pessoa"),
+            inverseJoinColumns = @JoinColumn(name = "id_livro"))
     private List<Livro> livros = new ArrayList<>();
 
     public Comprador(){

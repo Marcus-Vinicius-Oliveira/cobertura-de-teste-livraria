@@ -1,14 +1,12 @@
 package com.americanas.testes.cobrerturatestes.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
+import java.util.List;
 
 @Entity
 public class Pessoa implements Serializable {
@@ -29,6 +27,16 @@ public class Pessoa implements Serializable {
     private String telefone;
 
     private Double saldo;
+
+
+    @OneToMany(mappedBy = "comprador")
+    private List<Transacao> transacoes;
+
+//    @ManyToOne
+//    @JoinTable(name = "compra",
+//            joinColumns = @JoinColumn(name = "id_pessoa"),
+//            inverseJoinColumns = @JoinColumn(name = "id_livro"))
+//    private List<Livro> livros;
 
     public Pessoa(){
 
