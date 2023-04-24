@@ -1,6 +1,8 @@
 package com.americanas.testes.cobrerturatestes.config;
 
+import com.americanas.testes.cobrerturatestes.model.Livro;
 import com.americanas.testes.cobrerturatestes.model.Pessoa;
+import com.americanas.testes.cobrerturatestes.repository.LivroRepository;
 import com.americanas.testes.cobrerturatestes.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -28,6 +30,9 @@ public class H2Config implements CommandLineRunner {
     @Autowired
     private PessoaRepository pessoaRepository;
 
+    @Autowired
+    private LivroRepository livroRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -44,6 +49,18 @@ public class H2Config implements CommandLineRunner {
                 "21 96328-4481", 550.00);
 
         pessoaRepository.saveAll(Arrays.asList(p1, p2, p3));
+
+
+        Livro l1 = new Livro(null, "A Bíblia Sagrada", "Ed. 28ª",
+                "Versão King James", 380.00,30);
+
+        Livro l2 = new Livro(null,"O Alto da Compadecida", "Ed. 5ª",
+                "Ariano Suassuna", 30.00, 10);
+
+        Livro l3 = new Livro(null,"A Cabana", "Ed. 3ª",
+                "William P. Young", 50.00, 20);
+
+        livroRepository.saveAll(Arrays.asList(l1, l2, l3));
 
     }
 
