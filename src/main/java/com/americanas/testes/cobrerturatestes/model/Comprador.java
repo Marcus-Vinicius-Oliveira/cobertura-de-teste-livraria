@@ -33,6 +33,22 @@ public class Comprador extends Pessoa implements Serializable {
         this.livros = livros;
     }
 
+    public boolean jaComprou(Livro livro) {
+        for (Livro livrosComprados : livros) {
+            if (livrosComprados.getId().equals(livro.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void adicionarLivroComprado(Livro livro) {
+        if (livros == null) {
+            livros = new ArrayList<>();
+        }
+        livros.add(livro);
+    }
+
     @Override
     public String toString() {
         return "Comprador{" +

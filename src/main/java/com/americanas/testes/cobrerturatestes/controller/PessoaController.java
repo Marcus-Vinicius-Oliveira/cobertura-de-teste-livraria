@@ -21,15 +21,15 @@ public class PessoaController {
         return pessoaService.salvarPessoa(pessoa);
     }
 
-    @GetMapping
-    public List<Pessoa> listarPessoas() {
-        return pessoaService.listarPessoas();
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Pessoa> buscarPessoaPorId(@PathVariable Long id) {
         Optional<Pessoa> pessoa = pessoaService.buscarPessoaPorId(id);
         return pessoa.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public List<Pessoa> listarPessoas() {
+        return pessoaService.listarPessoas();
     }
 
     @PutMapping("/{id}")

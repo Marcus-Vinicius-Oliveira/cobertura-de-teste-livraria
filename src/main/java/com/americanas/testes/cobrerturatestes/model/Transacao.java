@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Objects;
 
 
 @Entity
@@ -71,15 +72,36 @@ public class Transacao implements Serializable {
         this.livro = livro;
     }
 
+    public Double getValorVenda(){
+        return valorVenda;
+    }
+
+    public void setValorVenda(Double valorVenda){
+        this.valorVenda = valorVenda;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transacao transacao = (Transacao) o;
+        return Objects.equals(id, transacao.id) && Objects.equals(momento, transacao.momento) && Objects.equals(comprador, transacao.comprador) && Objects.equals(livro, transacao.livro) && Objects.equals(valorVenda, transacao.valorVenda);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, momento, comprador, livro, valorVenda);
+    }
+
     @Override
     public String toString() {
         return "Transacao{" +
                 "id=" + id +
-                ", dataHora=" + momento +
+                ", momento=" + momento +
                 ", comprador=" + comprador +
                 ", livro=" + livro +
+                ", valorVenda=" + valorVenda +
                 '}';
     }
-
 }
 

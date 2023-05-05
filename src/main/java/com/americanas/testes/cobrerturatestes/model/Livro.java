@@ -23,6 +23,8 @@ public class Livro implements Serializable {
 
     private Integer quantidade;
 
+    private Boolean vendido = true;
+
     @OneToMany(mappedBy = "livro")
     private List<Transacao> transacoes;
 
@@ -89,6 +91,14 @@ public class Livro implements Serializable {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public boolean isVendido() {
+        return vendido;
+    }
+
+    public void setVendido(boolean vendido) {
+        this.vendido = vendido;
     }
 
     @Override
