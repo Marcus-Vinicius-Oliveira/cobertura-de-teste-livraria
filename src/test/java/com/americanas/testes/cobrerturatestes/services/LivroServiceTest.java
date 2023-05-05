@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +36,7 @@ public class LivroServiceTest {
         livro.setId(1L);
         livro.setNome("A Bíblia Sagrada");
         livro.setAutor("Versão King James");
-        livro.setPreco(380.00);
+        livro.setPreco(BigDecimal.valueOf(380.00).setScale(2));
         livro.setQuantidade(30);
         livro.setEdicao("Ed. 28ª");
 
@@ -53,7 +54,7 @@ public class LivroServiceTest {
         livro.setId(id);
         livro.setNome("A Bíblia Sagrada");
         livro.setAutor("Versão King James");
-        livro.setPreco(380.00);
+        livro.setPreco(BigDecimal.valueOf(380.00).setScale(2));
         livro.setQuantidade(30);
         livro.setEdicao("Ed. 28ª");
 
@@ -71,7 +72,7 @@ public class LivroServiceTest {
         livro1.setId(1L);
         livro1.setNome("A Bíblia Sagrada");
         livro1.setAutor("Versão King James");
-        livro1.setPreco(380.00);
+        livro1.setPreco(BigDecimal.valueOf(380.00).setScale(2));
         livro1.setQuantidade(30);
         livro1.setEdicao("Ed. 28ª");
 
@@ -79,7 +80,7 @@ public class LivroServiceTest {
         livro2.setId(2L);
         livro2.setNome("O Alto da Compadecida");
         livro2.setAutor("Ariano Suassuna");
-        livro2.setPreco(30.00);
+        livro2.setPreco(BigDecimal.valueOf(30.00).setScale(2));
         livro2.setQuantidade(10);
         livro2.setEdicao("Ed. 5ª");
 
@@ -100,7 +101,7 @@ public class LivroServiceTest {
         livro.setId(id);
         livro.setNome("A Bíblia Sagrada");
         livro.setAutor("Versão King James");
-        livro.setPreco(380.00);
+        livro.setPreco(BigDecimal.valueOf(380.00).setScale(2));
         livro.setQuantidade(30);
         livro.setEdicao("Ed. 28ª");
 
@@ -108,7 +109,7 @@ public class LivroServiceTest {
         livroAtualizado.setId(id);
         livroAtualizado.setNome("Padrões de Projetos");
         livroAtualizado.setAutor("Erich Gamma");
-        livroAtualizado.setPreco(93.01);
+        livroAtualizado.setPreco(BigDecimal.valueOf(93.01).setScale(2));
         livroAtualizado.setQuantidade(15);
         livroAtualizado.setEdicao("Ed. 4a");
 
@@ -127,7 +128,7 @@ public class LivroServiceTest {
         livro.setId(1L);
         livro.setNome("O Senhor dos Anéis");
         livro.setAutor("J.R.R. Tolkien");
-        livro.setPreco(50.0);
+        livro.setPreco(BigDecimal.valueOf(50.00).setScale(2));
         livro.setQuantidade(10);
         livro.setEdicao("1ª edição");
 

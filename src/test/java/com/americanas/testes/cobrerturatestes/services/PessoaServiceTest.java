@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +36,7 @@ public class PessoaServiceTest {
         pessoa.setCpf("124.998.954-20");
         pessoa.setEmail("mvoliveirajus@gmail.com");
         pessoa.setTelefone("21 96428-5551");
-        pessoa.setSaldo(300.00);
+        pessoa.setSaldo(new BigDecimal(300.00).setScale(2));
 
         when(pessoaRepository.save(pessoa)).thenReturn(pessoa);
 
@@ -54,7 +55,7 @@ public class PessoaServiceTest {
         pessoa.setCpf("124.998.954-20");
         pessoa.setEmail("mvoliveirajus@gmail.com");
         pessoa.setTelefone("21 96428-5551");
-        pessoa.setSaldo(300.00);
+        pessoa.setSaldo(BigDecimal.valueOf(300.00).setScale(2));
 
         when(pessoaRepository.findById(id)).thenReturn(Optional.of(pessoa));
 
@@ -73,7 +74,7 @@ public class PessoaServiceTest {
         pessoa.setCpf("124.998.954-20");
         pessoa.setEmail("mvoliveirajus@gmail.com");
         pessoa.setTelefone("21964285551");
-        pessoa.setSaldo(300.00);
+        pessoa.setSaldo(BigDecimal.valueOf(300.00).setScale(2));
 
         Pessoa pessoaAtualizada = new Pessoa();
         pessoaAtualizada.setNome("João Silva");
@@ -81,7 +82,7 @@ public class PessoaServiceTest {
         pessoaAtualizada.setCpf("124.111.547-08");
         pessoaAtualizada.setEmail("joao.silva@teste.com");
         pessoaAtualizada.setTelefone("21965998383");
-        pessoaAtualizada.setSaldo(200.0);
+        pessoaAtualizada.setSaldo(BigDecimal.valueOf(200.00).setScale(2));
 
         when(pessoaRepository.findById(id)).thenReturn(Optional.of(pessoa));
 
