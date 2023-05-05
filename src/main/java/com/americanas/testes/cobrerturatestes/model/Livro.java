@@ -1,11 +1,15 @@
 package com.americanas.testes.cobrerturatestes.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+@AllArgsConstructor
 public class Livro implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -19,11 +23,11 @@ public class Livro implements Serializable {
 
     private String autor;
 
-    private Double preco;
+    private BigDecimal preco;
 
     private Integer quantidade;
 
-    private Boolean vendido = true;
+    private Boolean vendido = false;
 
     @OneToMany(mappedBy = "livro")
     private List<Transacao> transacoes;
@@ -36,7 +40,7 @@ public class Livro implements Serializable {
     }
 
     public Livro(Long id, String nome, String edicao,
-                 String autor, Double preco, Integer quantidade) {
+                 String autor, BigDecimal preco, Integer quantidade) {
         this.id = id;
         this.nome = nome;
         this.edicao = edicao;
@@ -77,11 +81,11 @@ public class Livro implements Serializable {
         this.autor = autor;
     }
 
-    public Double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(Double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 
@@ -99,6 +103,19 @@ public class Livro implements Serializable {
 
     public void setVendido(boolean vendido) {
         this.vendido = vendido;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return Objects.equals(id, livro.id) && Objects.equals(nome, livro.nome) && Objects.equals(edicao, livro.edicao) && Objects.equals(autor, livro.autor) && Objects.equals(preco, livro.preco) && Objects.equals(quantidade, livro.quantidade) && Objects.equals(vendido, livro.vendido) && Objects.equals(transacoes, livro.transacoes) && Objects.equals(compradores, livro.compradores);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, edicao, autor, preco, quantidade, vendido, transacoes, compradores);
     }
 
     @Override

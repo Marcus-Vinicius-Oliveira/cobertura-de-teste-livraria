@@ -1,4 +1,4 @@
-package com.americanas.testes.cobrerturatestes;
+package com.americanas.testes.cobrerturatestes.services;
 
 import com.americanas.testes.cobrerturatestes.model.Livro;
 import com.americanas.testes.cobrerturatestes.model.Pessoa;

@@ -1,14 +1,17 @@
 package com.americanas.testes.cobrerturatestes.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+@AllArgsConstructor
 public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -26,23 +29,17 @@ public class Pessoa implements Serializable {
 
     private String telefone;
 
-    private Double saldo;
+    private BigDecimal saldo;
 
 
     @OneToMany(mappedBy = "comprador")
     private List<Transacao> transacoes;
 
-//    @ManyToOne
-//    @JoinTable(name = "compra",
-//            joinColumns = @JoinColumn(name = "id_pessoa"),
-//            inverseJoinColumns = @JoinColumn(name = "id_livro"))
-//    private List<Livro> livros;
-
     public Pessoa(){
 
     }
     public Pessoa(Long id, String nome, String dataNascimento,
-                  String cpf, String email, String telefone, Double saldo) {
+                  String cpf, String email, String telefone, BigDecimal saldo) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -100,14 +97,26 @@ public class Pessoa implements Serializable {
         this.telefone = telefone;
     }
 
-    public Double getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Double saldo) {
+    public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pessoa pessoa = (Pessoa) o;
+        return Objects.equals(id, pessoa.id) && Objects.equals(nome, pessoa.nome) && Objects.equals(dataNascimento, pessoa.dataNascimento) && Objects.equals(cpf, pessoa.cpf) && Objects.equals(email, pessoa.email) && Objects.equals(telefone, pessoa.telefone) && Objects.equals(saldo, pessoa.saldo) && Objects.equals(transacoes, pessoa.transacoes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, dataNascimento, cpf, email, telefone, saldo, transacoes);
+    }
 
     @Override
     public String toString() {

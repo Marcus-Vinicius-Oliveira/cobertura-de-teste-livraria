@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -26,27 +27,27 @@ public class H2Config implements CommandLineRunner {
 
         Pessoa p1 = new Pessoa(null,"Marcus","23/03/1987",
                 "124.998.954-20", "mvoliveirajus@gmail.com",
-                "21 96428-5551", 300.00);
+                "21 96428-5551", BigDecimal.valueOf(300.00).setScale(2));
 
         Pessoa p2 = new Pessoa(null,"Vinícius","05/01/1999",
                 "125.996.577-30", "mmendoncajus@gmail.com",
-                "21 97422-8643", 400.00);
+                "21 97422-8643", BigDecimal.valueOf(400.00).setScale(2));
 
         Pessoa p3 = new Pessoa(null,"Bruna","04/09/1989",
                 "134.956.987-32", "solldesouza@gmail.com",
-                "21 96328-4481", 550.00);
+                "21 96328-4481", BigDecimal.valueOf(550.00).setScale(2));
 
         pessoaRepository.saveAll(Arrays.asList(p1, p2, p3));
 
 
         Livro l1 = new Livro(null, "A Bíblia Sagrada", "Ed. 28ª",
-                "Versão King James", 380.00,30);
+                "Versão King James", BigDecimal.valueOf(380.00).setScale(2),30);
 
         Livro l2 = new Livro(null,"O Alto da Compadecida", "Ed. 5ª",
-                "Ariano Suassuna", 30.00, 10);
+                "Ariano Suassuna", BigDecimal.valueOf(30.00).setScale(2), 10);
 
         Livro l3 = new Livro(null,"A Cabana", "Ed. 3ª",
-                "William P. Young", 50.00, 20);
+                "William P. Young", BigDecimal.valueOf(50.00).setScale(2), 20);
 
         livroRepository.saveAll(Arrays.asList(l1, l2, l3));
 

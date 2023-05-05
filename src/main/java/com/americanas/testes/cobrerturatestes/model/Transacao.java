@@ -1,13 +1,16 @@
 package com.americanas.testes.cobrerturatestes.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Objects;
 
 
 @Entity
+@AllArgsConstructor
 public class Transacao implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -25,20 +28,20 @@ public class Transacao implements Serializable {
     @JoinColumn(name = "id_livro")
     private Livro livro;
 
-    private Double valorVenda;
+    private BigDecimal valorVenda;
 
-    public Transacao(){
-
-    }
-
-    public Transacao(Long id, Instant momento,
-                     Pessoa comprador, Livro livro, Double valorVenda) {
-        this.id = id;
-        this.momento = momento;
-        this.comprador = comprador;
-        this.livro = livro;
-        this.valorVenda = valorVenda;
-    }
+//    public Transacao(){
+//
+//    }
+//
+//    public Transacao(Long id, Instant momento,
+//                     Pessoa comprador, Livro livro, Double valorVenda) {
+//        this.id = id;
+//        this.momento = momento;
+//        this.comprador = comprador;
+//        this.livro = livro;
+//        this.valorVenda = valorVenda;
+//    }
 
     public Long getId() {
         return id;
@@ -72,11 +75,11 @@ public class Transacao implements Serializable {
         this.livro = livro;
     }
 
-    public Double getValorVenda(){
+    public BigDecimal getValorVenda(){
         return valorVenda;
     }
 
-    public void setValorVenda(Double valorVenda){
+    public void setValorVenda(BigDecimal valorVenda){
         this.valorVenda = valorVenda;
     }
 

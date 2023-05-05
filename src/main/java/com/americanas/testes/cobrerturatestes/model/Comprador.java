@@ -1,12 +1,15 @@
 package com.americanas.testes.cobrerturatestes.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
 public class Comprador extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -16,14 +19,14 @@ public class Comprador extends Pessoa implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_livro"))
     private List<Livro> livros = new ArrayList<>();
 
-    public Comprador(){
-
-    }
-
-    public Comprador(List<Livro> livros) {
-        super();
-        this.livros = livros;
-    }
+//    public Comprador(){
+//
+//    }
+//
+//    public Comprador(List<Livro> livros) {
+//        super();
+//        this.livros = livros;
+//    }
 
     public List<Livro> getLivros() {
         return livros;
@@ -49,11 +52,6 @@ public class Comprador extends Pessoa implements Serializable {
         livros.add(livro);
     }
 
-    @Override
-    public String toString() {
-        return "Comprador{" +
-                "livros=" + livros +
-                '}';
-    }
+
 }
 

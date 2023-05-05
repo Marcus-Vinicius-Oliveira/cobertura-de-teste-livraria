@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +36,7 @@ public class TransacaoService {
         transacao.setMomento(Instant.now());
         Pessoa comprador = transacao.getComprador();
         Livro livro = transacao.getLivro();
-        Double valorVenda = transacao.getValorVenda();
+        BigDecimal valorVenda = transacao.getValorVenda();
 
         // Verifica se o livro está disponível para venda
         Optional<Livro> livroDisponivel = livroRepository.findByIdAndVendidoFalse(livro.getId());
@@ -82,17 +83,17 @@ public class TransacaoService {
         transacaoRepository.deleteById(id);
     }
 
-    public boolean verificarSaldo(@NotNull Pessoa pessoa, Double valorVenda) {
-        return pessoa.getSaldo() >= valorVenda;
+    public boolean verificarSaldo(@NotNull Pessoa pessoa, @NotNull BigDecimal valorVenda) {
+        return pessoa.getSaldo().compareTo(valorVenda) >= 0;
     }
 
     public boolean efetivarVenda(Pessoa pessoa, @NotNull List<Livro> livros) {
-        Double valorVenda = 0.0;
+        BigDecimal valorVenda = BigDecimal.ZERO;
         for (Livro livro : livros) {
-            valorVenda += livro.getPreco();
+            valorVenda = valorVenda.add(livro.getPreco());
         }
         if (verificarSaldo(pessoa, valorVenda)) {
-            pessoa.setSaldo(pessoa.getSaldo() - valorVenda);
+            pessoa.setSaldo(pessoa.getSaldo().subtract(valorVenda));
             return true;
         } else {
             return false;
