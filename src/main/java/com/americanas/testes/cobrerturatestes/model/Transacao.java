@@ -30,18 +30,6 @@ public class Transacao implements Serializable {
 
     private BigDecimal valorVenda;
 
-//    public Transacao(){
-//
-//    }
-//
-//    public Transacao(Long id, Instant momento,
-//                     Pessoa comprador, Livro livro, Double valorVenda) {
-//        this.id = id;
-//        this.momento = momento;
-//        this.comprador = comprador;
-//        this.livro = livro;
-//        this.valorVenda = valorVenda;
-//    }
 
     public Long getId() {
         return id;

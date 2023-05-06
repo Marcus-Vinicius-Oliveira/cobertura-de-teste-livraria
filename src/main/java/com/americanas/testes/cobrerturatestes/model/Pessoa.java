@@ -2,7 +2,6 @@ package com.americanas.testes.cobrerturatestes.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 

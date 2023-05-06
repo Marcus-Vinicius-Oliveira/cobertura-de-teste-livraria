@@ -2,7 +2,6 @@ package com.americanas.testes.cobrerturatestes.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,14 +18,6 @@ public class Comprador extends Pessoa implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_livro"))
     private List<Livro> livros = new ArrayList<>();
 
-//    public Comprador(){
-//
-//    }
-//
-//    public Comprador(List<Livro> livros) {
-//        super();
-//        this.livros = livros;
-//    }
 
     public List<Livro> getLivros() {
         return livros;
